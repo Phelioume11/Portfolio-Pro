@@ -1,0 +1,121 @@
+/* Déclare la police */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.bulle-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    background-color: #334155;
+    border-radius: 50px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    z-index: 1000;
+    will-change: transform;
+}
+
+.bulle-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    text-decoration: none;
+    background-color: transparent;
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.bulle-link i {
+    font-size: 1.35rem;
+    color: white;
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+
+.bulle-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.bulle-link:hover:not(.active) i {
+    transform: scale(1.1);
+}
+
+
+
+.bulle-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.08),
+        0 0 12px rgba(255, 255, 255, 0.22);
+}
+
+.bulle-link.active i {
+    transform: scale(1.12);
+}
+
+
+
+
+
+/*---------- HOME PAGE ----------*/
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2A2F4B;
+
+}
+
+.main-content {
+    width:80%;
+    margin:auto
+}
+
+.presentation-div {
+    display:flex;
+    gap:1.5rem;
+    margin-right:10%;
+    margin-left:10%;
+    justify-content: center; /* centre les éléments horizontalement */
+    align-items: center;     /* centre verticalement si nécessaire */
+    text-align: center;
+    margin-top: 8%;
+}
+
+.Bonjour-h2 {
+    font-size: 2.3rem;
+    color: #EAF0F6;
+    margin:auto;
+    text-align:center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.presentation-p {
+    font-size: 1.2rem;
+    color: #B8C7D9;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.portrait-img {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+

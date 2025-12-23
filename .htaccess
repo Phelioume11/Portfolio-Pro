@@ -1,0 +1,9 @@
+DirectoryIndex public/index.php
+
+RewriteEngine On
+
+# Empêche l'accès direct aux fichiers sensibles
+RewriteRule ^(config|src)/ - [F]
+
+# Route /contact
+RewriteRule ^contact/?$ public/contact.php [L]

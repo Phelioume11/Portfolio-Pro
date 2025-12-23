@@ -1,0 +1,9 @@
+RewriteEngine On
+
+#syntaxe
+#RewriteRule ^lien-appele$ lien-charge.php [L]
+
+
+RewriteRule ^contact$ index.php?route=contact [L]
+RewriteRule ^$ index.php?route=home [L]
+RewriteRule ^product/([0-9]+)$ index.php?route=product&id=$1 [L]
