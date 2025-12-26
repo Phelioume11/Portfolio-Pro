@@ -1,67 +1,90 @@
 console.log("bulle nav chargée");
 
-const bulle = document.querySelector('.bulle-nav');
+/* ===============================
+   BULLE – effet inertiel au scroll
+================================ */
+
+const bulle = document.querySelector(".bulle-nav");
 
 let lastScrollY = window.scrollY;
-let velocity = 0;
 let currentOffset = 0;
 let targetOffset = 0;
 
-function animate() {
-    // interpolation douce
-    currentOffset += (targetOffset - currentOffset) * 0.1;
+function animateBulle() {
+    currentOffset += (targetOffset - currentOffset) * 0.12;
 
     bulle.style.transform = `
         translateX(-50%)
         translateY(${currentOffset}px)
     `;
 
-    // retour progressif à la position initiale
     targetOffset *= 0.85;
-
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateBulle);
 }
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
-    velocity = currentScrollY - lastScrollY;
+    const velocity = currentScrollY - lastScrollY;
 
-    // sens inversé + mouvement subtil
-    targetOffset = Math.max(Math.min(velocity * -0.4, 10), -10);
-
+    targetOffset = Math.max(Math.min(-velocity * 0.4, 10), -10);
     lastScrollY = currentScrollY;
 });
 
-animate();
+animateBulle();
 
+/* ===============================
+   SECTION ACTIVE (FIABLE)
+================================ */
 
+const sections = Array.from(document.querySelectorAll("section"));
+const navLinks = Array.from(document.querySelectorAll(".bulle-link"));
 
+function updateActiveSection() {
+    let currentSection = "home";
+    const scrollPos = window.scrollY + window.innerHeight * 0.35;
 
-
-
-
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".bulle-link");
-
-function onScroll() {
-    let currentSection = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollY >= sectionTop - sectionHeight / 3) {
-            currentSection = section.getAttribute("id");
+    for (let section of sections) {
+        if (scrollPos >= section.offsetTop) {
+            currentSection = section.id;
         }
-    });
+    }
 
     navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.dataset.section === currentSection) {
-            link.classList.add("active");
-        }
+        link.classList.toggle(
+            "active",
+            link.dataset.section === currentSection
+        );
     });
 }
 
-window.addEventListener("scroll", onScroll);
+window.addEventListener("scroll", updateActiveSection);
+updateActiveSection();
+
+/* ===============================
+   CLICK → SCROLL FLUIDE
+================================ */
+
+navLinks.forEach(link => {
+    link.addEventListener("click", e => {
+        const target = link.dataset.section;
+        if (!target) return;
+
+        e.preventDefault();
+
+        if (target === "home") {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+            return;
+        }
+
+        const section = document.getElementById(target);
+        if (!section) return;
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+});

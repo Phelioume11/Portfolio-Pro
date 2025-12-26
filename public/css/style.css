@@ -38,6 +38,7 @@
 }
 
 
+
 .bulle-link i {
     font-size: 1.35rem;
     color: white;
@@ -77,6 +78,7 @@ html, body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #2A2F4B;
+    scroll-behavior: smooth;
 
 }
 
@@ -119,3 +121,15 @@ html, body {
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
+
+
+
+
+
+
+
+
+section {
+    min-height: 100vh;
+    scroll-margin-top: 100px;
+}
