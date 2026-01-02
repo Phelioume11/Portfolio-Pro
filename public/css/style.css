@@ -130,6 +130,395 @@ html, body {
 
 
 section {
-    min-height: 100vh;
+    min-height: 90vh;
     scroll-margin-top: 100px;
+}
+
+
+
+
+
+
+
+/*  SKILLS SECTION  */
+.skills-section {
+    text-align: center;
+}
+
+.skills-title {
+    font-size: 2.2rem;
+    color: #EAF0F6;
+    margin-bottom: 50px;
+    margin-top:0;
+}
+
+/* CONTENEUR FLEX */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centre les lignes incomplètes */
+    gap: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* UNE COMPÉTENCE */
+.skill {
+    flex: 0 1 calc(25% - 30px); /* 4 par ligne */
+    max-width: 70%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+/* ICONES */
+.skill i {
+    font-size: 2.4rem;
+    color: #EAF0F6;
+}
+
+/* TEXTE */
+.skill span {
+    font-size: 1rem;
+    color: #B8C7D9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .skill {
+        flex: 0 1 calc(33.33% - 30px); /* 3 par ligne */
+    }
+}
+
+@media (max-width: 600px) {
+    .skill {
+        flex: 0 1 calc(50% - 30px); /* 2 par ligne */
+    }
+}
+
+
+
+
+
+
+/* =========================
+   FORMULAIRE CONTACT
+========================= */
+
+.form {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    box-sizing: border-box;
+}
+
+.h2-contact {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 2.5rem;
+}
+
+/* =========================
+   GROUPES 2 COLONNES
+========================= */
+
+.grp2 {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.grp2 > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   GROUPES PLEINE LARGEUR
+========================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.form label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #EAF0F6;
+}
+
+/* =========================
+   INPUTS / TEXTAREA / FILE
+========================= */
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #EAF0F6;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Placeholder */
+.form input::placeholder,
+.form textarea::placeholder {
+    color: #B8C7D9;
+    opacity: 0.7;
+}
+
+/* Focus */
+.form input:focus,
+.form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: #9CA3AF;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.form textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+.form input[type="file"] {
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+/* =========================
+   RECAPTCHA
+========================= */
+
+.g-recaptcha {
+    margin: 2rem 0;
+}
+
+/* =========================
+   BOUTON ENVOYER
+========================= */
+
+.envoie {
+    width: 100%;
+    padding: 0.9rem 1.2rem; /* moins haut pour un bouton plus compact */
+    border: none;
+    border-radius: 16px;    /* un peu moins arrondi pour compacter */
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    color: #0F172A;
+    font-size: 1rem;        /* taille du texte réduite */
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Hover */
+.envoie:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(96,165,250,0.4);
+}
+
+/* Active */
+.envoie:active {
+    transform: scale(0.96);
+    box-shadow: 0 6px 16px rgba(96,165,250,0.3);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .grp2 {
+        flex-direction: column;
+    }
+
+    .form {
+        padding: 2rem;
+    }
+}
+
+
+
+
+/*----------    PROJETS    --------------*/
+/* =========================
+   SECTION PROJECTS
+========================= */
+
+#projects {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.projects-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 4rem;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.project-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Hover */
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+.project-content {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* TITRE */
+.project-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 0.6rem;
+}
+
+/* LABELS */
+.project-labels {
+    font-size: 0.9rem;
+    color: rgba(248, 250, 252, 0.65);
+    margin-bottom: auto;
+}
+
+/* =========================
+   BOUTON
+========================= */
+
+.project-btn {
+    margin-top: 1.8rem;
+    padding: 0.9rem 1.4rem;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0F172A;
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    transition: 
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+/* Hover bouton */
+.project-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(96,165,250,0.45);
+    filter: brightness(1.05);
+}
+
+/* Active */
+.project-btn:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .projects-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .project-image {
+        height: 160px;
+    }
 }

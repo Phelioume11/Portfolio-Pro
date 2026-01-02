@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Repositories\ProductRepository;
+use App\Repositories\ProjectRepository;
 
-class HomeController{
-
-    public function display(){
-        // Chercher les produits à afficher
-        $productRepo = new ProductRepository();
-        $products = $productRepo->findAll();
+class HomeController
+{
+    public function display()
+    {
+        $projectRepo = new ProjectRepository();
+        $projects = $projectRepo->findAll();
 
         $template = 'home';
         require_once '../src/views/layout.phtml';

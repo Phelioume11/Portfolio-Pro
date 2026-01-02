@@ -14,134 +14,120 @@
     </div>
 </div>
 </section>
+<section id="skills" class="skills-section">
+    <h2 class="skills-title">Compétences techniques</h2>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-<section id="skills">rjgddddddddddddddkn
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br></section>
-<section id="projects">rjssssssssssssssgkn
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br></section>
-<section id="contact">rjgsqdqsdqdqskn
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br></section>
+    <div class="skills-container">
+        <div class="skill"><i class="fa-brands fa-html5"></i><span>HTML</span></div>
+        <div class="skill"><i class="fa-brands fa-css3-alt"></i><span>CSS</span></div>
+        <div class="skill"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+        <div class="skill"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
+
+        <div class="skill"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+        <div class="skill"><i class="fa-solid fa-database"></i><span>SQL</span></div>
+        <div class="skill"><i class="fa-solid fa-pen-nib"></i><span>UX / UI</span></div>
+        <div class="skill"><i class="fa-solid fa-diagram-project"></i><span>Gestion de projet</span></div>
+
+        <div class="skill"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
+        <div class="skill"><i class="fa-solid fa-cubes"></i><span>No-code</span></div>
+        <div class="skill"><i class="fa-solid fa-network-wired"></i><span>Réseaux</span></div>
+        <div class="skill"><i class="fa-solid fa-shield-halved"></i><span>Cybersécurité</span></div>
+
+        <div class="skill"><i class="fa-brands fa-symfony"></i><span>Symfony</span></div>
+        <div class="skill"><i class="fa-brands fa-react"></i><span>React</span></div>
+        <div class="skill"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+        <div class="skill"><i class="fa-brands fa-python"></i><span>Python</span></div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section">
+    <h2 class="projects-title">Mes projets</h2>
+
+    <div class="projects-grid">
+        <?php foreach ($projects as $project): ?>
+            <article class="project-card">
+                <img
+                    src="/Portfolio-Pro/public/img/<?= htmlspecialchars($project->getImg()) ?>"
+                    alt="<?= htmlspecialchars($project->getNom()) ?>"
+                >
+
+                <div class="project-content">
+                    <h3><?= htmlspecialchars($project->getNom()) ?></h3>
+
+                    <p class="project-labels">
+                        <?= htmlspecialchars($project->getLabels()) ?>
+                    </p>
+
+                    <a href="index.php?route=project&id=<?= $project->getId() ?>" class="project-btn">
+                        Découvrir
+                    </a>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+
+
+<section id="contact">
+    <form id="contactForm"
+          class="form"
+          action="https://hook.eu1.make.com/4x5yiscx5253fdpl114sk2xgxgs5v12i"
+          method="POST"
+          enctype="multipart/form-data">
+        
+        <h2 class="h2-contact">Contact</h2>
+
+        <!-- NOM / PRÉNOM -->
+        <div class="grp2">
+            <div>
+                <label for="nom">*Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+
+            <div>
+                <label for="prenom">*Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+        </div>
+
+        <!-- EMAIL / TÉLÉPHONE -->
+        <div class="grp2">
+            <div>
+                <label for="email">*Email</label>
+                <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
+            </div>
+
+            <div>
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 00 00 00 00">
+            </div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message"
+                      name="message"
+                      placeholder="Expliquez votre demande, projet, mission…"
+                      rows="7"></textarea>
+        </div>
+
+        <!-- PIÈCE JOINTE -->
+        <div class="form-group">
+            <label for="attachment">Pièce jointe (optionnel)</label>
+            <input type="file" id="attachment" name="attachment" 
+                   accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip">
+            <small class="file-info">
+                Formats acceptés : PDF, DOC, DOCX, JPG, PNG, ZIP — max 5 Mo
+            </small>
+        </div>
+
+        <!-- RECAPTCHA (optionnel) -->
+        <div class="g-recaptcha" data-sitekey="TON_SITE_KEY"></div>
+
+        <button type="submit" class="envoie">
+            <h3 class="h3-envoyer">Envoyer</h3>
+        </button>
+    </form>
+</section>
