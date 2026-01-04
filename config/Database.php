@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Core;
+
+use PDO;
+
 class Database
 {
     private static ?PDO $instance = null;
@@ -7,10 +11,9 @@ class Database
     public static function getInstance(): PDO
     {
         if (self::$instance === null) {
-
             $host = 'localhost';
             $port = 8889; // adapte selon ton environnement
-            $db   = 'portfolio_pro';
+            $db   = 'portfolio-pro';
             $user = 'root';
             $pass = 'root';
             $charset = 'utf8mb4';

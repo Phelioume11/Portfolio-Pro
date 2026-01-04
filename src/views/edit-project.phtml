@@ -1,0 +1,17 @@
+<h2>Modifier le projet</h2>
+
+<form action="index.php?route=update-project" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($project->getId()) ?>">
+
+    <label for="nom">Nom du projet</label>
+    <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($project->getNom()) ?>" required>
+
+    <label for="labels">Labels</label>
+    <input type="text" id="labels" name="labels" value="<?= htmlspecialchars($project->getLabels()) ?>" required>
+
+    <label for="img">Image</label>
+    <input type="file" id="img" name="img">
+    <small>Image actuelle : <?= htmlspecialchars($project->getImg()) ?></small>
+
+    <button type="submit">Mettre à jour</button>
+</form>

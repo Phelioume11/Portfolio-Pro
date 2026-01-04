@@ -6,12 +6,12 @@ use App\Repositories\ProjectRepository;
 
 class HomeController
 {
-    public function display()
+    public function display(): void
     {
         $projectRepo = new ProjectRepository();
         $projects = $projectRepo->findAll();
 
         $template = 'home';
-        require_once '../src/views/layout.phtml';
+        include __DIR__ . '/../views/layout.phtml';
     }
 }

@@ -1,7 +1,13 @@
 console.log("bulle nav chargée");
 
+if (document.querySelector(".error-404")) {
+    const bulle = document.querySelector(".bulle-nav");
+    if (bulle) bulle.style.display = "none";
+}
+
+
 /* ===============================
-   BULLE – effet inertiel au scroll
+   BULLE NAV — EFFET INERTIEL
 ================================ */
 
 const bulle = document.querySelector(".bulle-nav");
@@ -23,68 +29,82 @@ function animateBulle() {
 }
 
 window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-    const velocity = currentScrollY - lastScrollY;
+    const scrollY = window.scrollY;
+    const velocity = scrollY - lastScrollY;
 
     targetOffset = Math.max(Math.min(-velocity * 0.4, 10), -10);
-    lastScrollY = currentScrollY;
+    lastScrollY = scrollY;
 });
 
 animateBulle();
 
 /* ===============================
-   SECTION ACTIVE (FIABLE)
+   SECTION ACTIVE
 ================================ */
 
-const sections = Array.from(document.querySelectorAll("section"));
-const navLinks = Array.from(document.querySelectorAll(".bulle-link"));
+const sections = document.querySelectorAll("section");
+const links = document.querySelectorAll(".bulle-link");
 
-function updateActiveSection() {
-    let currentSection = "home";
-    const scrollPos = window.scrollY + window.innerHeight * 0.35;
+function updateActiveLink() {
+    let current = "";
 
-    for (let section of sections) {
-        if (scrollPos >= section.offsetTop) {
-            currentSection = section.id;
+    sections.forEach(section => {
+        const offset = section.offsetTop;
+        const height = section.offsetHeight;
+
+        if (window.scrollY >= offset - height / 3) {
+            current = section.id;
         }
-    }
+    });
 
-    navLinks.forEach(link => {
+    links.forEach(link => {
         link.classList.toggle(
             "active",
-            link.dataset.section === currentSection
+            link.dataset.section === current
         );
     });
 }
 
-window.addEventListener("scroll", updateActiveSection);
-updateActiveSection();
+window.addEventListener("scroll", updateActiveLink);
+updateActiveLink();
 
 /* ===============================
    CLICK → SCROLL FLUIDE
 ================================ */
 
-navLinks.forEach(link => {
+links.forEach(link => {
     link.addEventListener("click", e => {
-        const target = link.dataset.section;
-        if (!target) return;
+        const targetId = link.dataset.section;
+        if (!targetId) return;
 
         e.preventDefault();
 
-        if (target === "home") {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-            return;
-        }
+        const target = document.getElementById(targetId);
+        if (!target) return;
 
-        const section = document.getElementById(target);
-        if (!section) return;
-
-        section.scrollIntoView({
+        target.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
     });
 });
+
+/* ===============================
+   MASQUER LA BULLE AU FOOTER
+================================ */
+
+const footer = document.getElementById("footer");
+
+function toggleBulleOnFooter() {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (footerTop < windowHeight - 80) {
+        bulle.classList.add("hidden");
+    } else {
+        bulle.classList.remove("hidden");
+    }
+}
+
+window.addEventListener("scroll", toggleBulleOnFooter);
+toggleBulleOnFooter();

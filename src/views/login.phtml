@@ -1,0 +1,15 @@
+<h2>Connexion Admin</h2>
+
+<form action="index.php?route=do-login" method="POST">
+    <?php if (!empty($error)) : ?>
+        <p style="color:red"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+
+    <label for="username">Nom d'utilisateur</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Se connecter</button>
+</form>
