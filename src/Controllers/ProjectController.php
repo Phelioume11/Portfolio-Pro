@@ -6,28 +6,7 @@ use App\Repositories\ProjectRepository;
 
 class ProjectController
 {
-    public function display()
-    {
-        // Vérifie qu'un id de projet est passé
-        $id = $_GET['id'] ?? null;
-        if (!$id) {
-            header("Location: index.php?route=error");
-            exit;
-        }
-
-        $repo = new ProjectRepository();
-        $project = $repo->findById($id);
-
-        if (!$project) {
-            header("Location: index.php?route=error");
-            exit;
-        }
-
-        // Charge le template edit-project.phtml
-        $template = 'edit-project';
-        require __DIR__ . '/../views/layout.phtml';
-    }
-
+    // Page d'édition
     public function editProject(): void
     {
         $id = $_GET['id'] ?? null;
@@ -37,7 +16,7 @@ class ProjectController
             exit;
         }
 
-        $repo = new \App\Repositories\ProjectRepository();
+        $repo = new ProjectRepository();
         $project = $repo->findById((int)$id);
 
         if (!$project) {
@@ -48,6 +27,7 @@ class ProjectController
         include __DIR__ . '/../views/edit-project.phtml';
     }
 
+    // Action POST pour mise à jour
     public function updateProject(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -62,7 +42,7 @@ class ProjectController
                 $img = $imgName;
             }
 
-            $repo = new \App\Repositories\ProjectRepository();
+            $repo = new ProjectRepository();
             $repo->updateProject($id, $nom, $labels, $img);
 
             header('Location: index.php?route=dashboard');
@@ -70,4 +50,23 @@ class ProjectController
         }
     }
 
+    // Page projet détaillé (Découvrir)
+    public function displayProject(): void
+    {
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            header("Location: index.php?route=error");
+            exit;
+        }
+
+        $repo = new ProjectRepository();
+        $project = $repo->findById((int)$id);
+
+        if (!$project) {
+            header("Location: index.php?route=error");
+            exit;
+        }
+
+        include __DIR__ . '/../views/project-detail.phtml';
+    }
 }

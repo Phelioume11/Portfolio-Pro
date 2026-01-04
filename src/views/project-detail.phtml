@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($project->getNom()) ?> - Projet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1C1F3A;
+            color: #EAF0F6;
+            margin: 0;
+            padding: 2rem;
+        }
+        .project-detail {
+            max-width: 900px;
+            margin: auto;
+            background: #2A2F4B;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        .project-detail img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .project-detail h1 {
+            margin-bottom: 1rem;
+        }
+        .project-detail .labels {
+            font-style: italic;
+            color: #B8C7D9;
+            margin-bottom: 1rem;
+        }
+        .project-detail .description {
+            line-height: 1.6;
+        }
+        a.back {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #60A5FA;
+        }
+    </style>
+</head>
+<body>
+    <div class="project-detail">
+        <img src="/Portfolio-Pro/public/img/<?= htmlspecialchars($project->getImg()) ?>" 
+             alt="<?= htmlspecialchars($project->getNom()) ?>">
+        <h1><?= htmlspecialchars($project->getNom()) ?></h1>
+        <div class="labels"><?= htmlspecialchars($project->getLabels()) ?></div>
+        <div class="description"><?= nl2br(htmlspecialchars($project->getDescription())) ?></div>
+        <a href="index.php?route=home" class="back">← Retour à l’accueil</a>
+    </div>
+</body>
+</html>

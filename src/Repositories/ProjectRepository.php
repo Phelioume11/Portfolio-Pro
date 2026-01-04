@@ -64,8 +64,10 @@ class ProjectRepository
         $project->setNom($data['nom']);
         $project->setLabels($data['labels']);
         $project->setImg($data['img']);
+        $project->setDescription($data['description']);
         $project->setDateCreation($data['date_creation']);
 
         return $project;
     }
+
 }
