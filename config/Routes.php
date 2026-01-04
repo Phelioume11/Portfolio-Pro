@@ -9,5 +9,8 @@ $routes = [
     'login'          => ['controller' => 'LoginController', 'method' => 'displayLoginForm'],
     'do-login'       => ['controller' => 'LoginController', 'method' => 'login'],
     'logout'         => ['controller' => 'LoginController', 'method' => 'logout'],
-    'error'          => ['controller' => 'ErrorController', 'method' => 'display']
+    'error'          => ['controller' => 'ErrorController', 'method' => 'display'],
+    'delete-project' => ['controller' => 'ProjectController','method' => 'deleteProject'],
+    'update-project' => ['controller' => 'ProjectController','method' => 'updateProject']
+
 ];

@@ -8,6 +8,7 @@
         <th>Labels</th>
         <th>Image</th>
         <th>Actions</th>
+        <th>Actions</th>
     </tr>
     <?php foreach ($projects as $project): ?>
         <tr>
@@ -19,8 +20,20 @@
                 <?php endif; ?>
             </td>
             <td>
-                <a href="index.php?route=edit-project&id=<?= $project->getId() ?>">Modifier</a>
+                <a href="index.php?route=edit-project&id=<?= $project->getId() ?>" class="btn-edit">
+                    Modifier
+                </a>
+
+                
+
             </td>
+            <td>
+            <a href="index.php?route=delete-project&id=<?= $project->getId() ?>"
+        onclick="return confirm('Supprimer ce projet ?')"
+        class="btn-delete">
+        Supprimer
+        </a>
+                </td>
         </tr>
     <?php endforeach; ?>
 </table>

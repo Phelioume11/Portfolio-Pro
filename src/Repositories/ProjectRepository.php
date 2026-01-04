@@ -57,6 +57,16 @@ class ProjectRepository
         }
     }
 
+    public function deleteById(int $id): void
+    {
+        $pdo = Database::getInstance();
+
+        $stmt = $pdo->prepare("DELETE FROM projects WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
+
+
     private function hydrate(array $data): Project
     {
         $project = new Project();
